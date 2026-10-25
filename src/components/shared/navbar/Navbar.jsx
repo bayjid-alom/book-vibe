@@ -39,7 +39,7 @@ const Navbar = () => {
     </>;
 
     return (
-        <header className="w-full bg-white shadow-sm">
+        <header className="w-full bg-white shadow-sm py-1">
             <nav className="navbar w-[94%] md:w-[90%] lg:w-[80%] mx-auto bg-white">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -73,7 +73,7 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <Link to="/" className="text-xl font-extrabold text-black whitespace-nowrap">
+                    <Link to="/" className="text-xl md:text-[22px] font-extrabold text-black whitespace-nowrap">
                         Book Vibe
                     </Link>
                 </div>
@@ -85,9 +85,10 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-end gap-2">
-                    <button className="btn btn-sm border-none bg-green-600 text-white hover:bg-green-700">
+                    <button className="btn btn-sm border-none bg-[#23BE0A] text-white hover:bg-green-700">
                         Sign In
                     </button>
+                    
                     <button className="btn btn-sm border-none bg-cyan-500 text-white hover:bg-cyan-600">
                         Sign Up
                     </button>
