@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
+
+
 
 const Books = () => {
+
+  
     return (
         <div>
-            Books Section
+            <h2 className=''>Books</h2>
         </div>
     );
 };
