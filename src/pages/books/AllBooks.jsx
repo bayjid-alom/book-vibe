@@ -5,6 +5,7 @@ const booksPromise = fetch("/booksData.json").then(res => res.json());
 
 const AllBooks = () => {
     const books = use(booksPromise);
+    // console.log(books);
 
     return (
         <section className="w-[94%] md:w-[90%] lg:w-[80%] mx-auto py-10 md:py-14">
