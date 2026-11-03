@@ -25,7 +25,11 @@ const BookDetails = () => {
     } = expectedBook;
 
 
-    const { handleMarkAsRead, readList, setReadList } = useContext(BookContext);
+    const { handleMarkAsRead,
+        readList,
+        setReadList,
+        wishlist,
+        handleWishlist } = useContext(BookContext);
 
 
     return (
@@ -140,7 +144,9 @@ const BookDetails = () => {
                             Mark as Read
                         </button>
 
-                        <button className="btn border-none bg-[#50B8C8] px-6 text-white hover:bg-[#3DA5B5]">
+                        <button
+                            onClick={() => handleWishlist(expectedBook)}
+                            className="btn border-none bg-[#50B8C8] px-6 text-white hover:bg-[#3DA5B5]">
                             Add to Wishlist
                         </button>
                     </div>

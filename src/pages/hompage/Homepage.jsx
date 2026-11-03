@@ -3,6 +3,7 @@ import Banner from './Banner';
 import AllBooks from '../books/AllBooks';
 
 const Homepage = () => {
+
     return (
         <>
 
