@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../context/BookProvider';
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -22,6 +23,10 @@ const BookDetails = () => {
         publisher,
         yearOfPublishing
     } = expectedBook;
+
+
+    const { handleMarkAsRead, readList, setReadList } = useContext(BookContext);
+
 
     return (
 
@@ -129,12 +134,14 @@ const BookDetails = () => {
 
                     {/* Static Buttons */}
                     <div className="mt-6 flex gap-3">
-                        <button className="btn btn-outline border-gray-300 bg-white px-6 text-gray-900 hover:bg-gray-100">
-                            Read
+                        <button
+                            onClick={() => handleMarkAsRead(expectedBook)}
+                            className="btn btn-outline border-gray-300 bg-white px-6 text-gray-900 hover:bg-gray-100">
+                            Mark as Read
                         </button>
 
                         <button className="btn border-none bg-[#50B8C8] px-6 text-white hover:bg-[#3DA5B5]">
-                            Wishlist
+                            Add to Wishlist
                         </button>
                     </div>
                 </div>

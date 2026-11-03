@@ -39,7 +39,7 @@ const Navbar = () => {
     </>;
 
     return (
-        <header className="w-full bg-white shadow-sm py-1">
+        <header className="w-full bg-white shadow-sm py-1 sticky top-0 z-50">
             <nav className="navbar w-[94%] md:w-[90%] lg:w-[80%] mx-auto bg-white">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -88,7 +88,7 @@ const Navbar = () => {
                     <button className="btn btn-sm border-none bg-[#23BE0A] text-white hover:bg-green-700">
                         Sign In
                     </button>
-                    
+
                     <button className="btn btn-sm border-none bg-cyan-500 text-white hover:bg-cyan-600">
                         Sign Up
                     </button>
