@@ -1,10 +1,30 @@
 import { FileText, MapPin, Users } from 'lucide-react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { BookContext } from '../../context/BookProvider';
 
-const ListedWishlist = () => {
+const ListedWishlist = ({ sortingType }) => {
     const { wishlist } = useContext(BookContext);
+
+    const [filteredWishlist, setFilteredWishlist] = useState(wishlist);
+    useEffect(() => {
+        if (sortingType) {
+            if (sortingType === "pages") {
+                const sortedData = [...wishlist].sort((a, b) => a.totalPages - b.totalPages);
+                setFilteredWishlist(sortedData);
+            }
+            else if (sortingType === "rating") {
+                const sortedData = [...wishlist].sort((a, b) => a.rating - b.rating);
+                setFilteredWishlist(sortedData);
+            }
+        }
+        else {
+            setFilteredWishlist(wishlist);
+        }
+    }, [sortingType, wishlist]);
+
+
+
 
     return (
         <div className="space-y-4">
@@ -13,6 +33,7 @@ const ListedWishlist = () => {
             {/* Conditional empty message */}
             {
                 wishlist.length === 0 && <div className="flex flex-col items-center justify-center text-center bg-[#F8FAFC] border border-gray-200 rounded-2xl py-16 md:py-20 px-5">
+
 
                     <h2 className="text-xl md:text-2xl font-bold text-gray-800 font-serif">
                         Your Wishlist is Empty!
@@ -40,7 +61,8 @@ const ListedWishlist = () => {
 
             {/* Wishlist Card */}
             {
-                wishlist.map(book => (
+                // wishlist.map(book => (
+                filteredWishlist.map(book => (
 
                     <div
                         key={book.bookId}

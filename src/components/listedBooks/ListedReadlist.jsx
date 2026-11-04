@@ -1,19 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BookContext } from '../../context/BookProvider';
 import BookCard from '../../ui/BookCard';
 import { Link } from 'react-router';
 import { FileText, MapPin, Users } from 'lucide-react';
 
-const ListedReadlist = () => {
-
+const ListedReadlist = ({ sortingType }) => {
     const { readList } = useContext(BookContext);
+
+    // Way - 02
+    // let sortedReadlist = [...readList];
+    // if (sortingType) {
+    //     if (sortingType === "pages") {
+    //         sortedReadlist.sort((a, b) => a.totalPages - b.totalPages);
+    //     }
+    //     else if (sortingType === "rating") {
+    //         sortedReadlist.sort((a, b) => a.rating - b.rating);
+    //     }
+    //     else if (sortingType === "year") {
+    //         sortedReadlist.sort((a, b) => a.yearOfPublishing - b.yearOfPublishing);
+    //     }
+    // }
+
+    // dependencies handling
+    // Way - 01
+    const [filteredReadlist, setFilteredReadlist] = useState(readList);
+    useEffect(() => {
+        if (sortingType) {
+            if (sortingType === "pages") {
+                const sortedData = [...readList].sort((a, b) => a.totalPages - b.totalPages);
+                // console.log(sortedData);
+                setFilteredReadlist(sortedData);
+            }
+            else if (sortingType === "rating") {
+                const sortedData = [...readList].sort((a, b) => a.rating - b.rating);
+                setFilteredReadlist(sortedData);
+            }
+        }
+    }, [sortingType, readList]);
+
+
+
 
 
     return (
 
         <div className="space-y-4">
-
-
 
             {/* Conditional empty message */}
             {
@@ -46,7 +77,7 @@ const ListedReadlist = () => {
 
             {/* Readlist Card */}
             {
-                readList.map(book => (
+                filteredReadlist.map(book => (
 
                     <div
                         key={book.bookId}

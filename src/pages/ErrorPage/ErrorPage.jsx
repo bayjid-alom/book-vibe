@@ -1,12 +1,12 @@
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router';
+// import notFoundImage from "../../assets/404.png"
 
 const ErrorPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-indigo-100 px-6 py-12">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-white via-blue-50 to-indigo-100 px-6 py-12">
             <div className="max-w-5xl w-full grid md:grid-cols-2 items-center gap-10">
 
                 {/* 404 Illustration */}
@@ -14,7 +14,7 @@ const ErrorPage = () => {
                     <div className="absolute w-64 h-64 bg-blue-300/30 blur-3xl rounded-full"></div>
 
                     <div className="relative text-center">
-                        <h1 className="text-8xl sm:text-9xl font-black tracking-tighter bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+                        <h1 className="text-8xl sm:text-9xl font-black tracking-tighter bg-linear-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
                             404
                         </h1>
 
