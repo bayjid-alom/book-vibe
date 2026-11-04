@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getAllReadlistFromLocalDB } from '../utils/localDB';
+import { addReadlistToLocalDB, getAllReadlistFromLocalDB } from '../utils/localDB';
 
 export const BookContext = createContext()
 
@@ -23,6 +23,11 @@ const BookProvider = ({ children }) => {
         // step-2. array or collection
         // step-3. if the book is already exist then show a toast or alert
         // step-4. if not then add the book in the array or collection
+
+        // call for save in local storage |
+        addReadlistToLocalDB(currentBook);
+
+
         const isExistBook = readList.find(book => book.bookId == currentBook.bookId)
         if (isExistBook) {
             toast.info("You've already added this book to your read list.");
