@@ -1,75 +1,73 @@
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router';
-// import notFoundImage from "../../assets/404.png"
+import notFoundImage from "../../assets/404.png";
+import { ArrowLeft, House } from 'lucide-react';
 
 const ErrorPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-white via-blue-50 to-indigo-100 px-6 py-12">
-            <div className="max-w-5xl w-full grid md:grid-cols-2 items-center gap-10">
+        <div className="min-h-screen flex items-center justify-center bg-white px-5 py-12">
 
-                {/* 404 Illustration */}
-                <div className="relative flex justify-center items-center">
-                    <div className="absolute w-64 h-64 bg-blue-300/30 blur-3xl rounded-full"></div>
+            <div className="w-full max-w-5xl grid md:grid-cols-2 items-center gap-8 md:gap-12 lg:gap-16">
 
-                    <div className="relative text-center">
-                        <h1 className="text-8xl sm:text-9xl font-black tracking-tighter bg-linear-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-                            404
-                        </h1>
-
-                        <div className="mt-4 inline-block rounded-2xl border border-blue-100 bg-white px-6 py-4 shadow-xl shadow-blue-100/50">
-                            <p className="text-5xl">🚀</p>
-                            <p className="mt-2 font-semibold text-slate-700">
-                                Lost in Space?
-                            </p>
-                        </div>
-
-                        <span className="absolute top-0 right-0 text-3xl text-blue-400">✦</span>
-                        <span className="absolute bottom-12 -left-4 text-3xl text-indigo-400">✧</span>
-                    </div>
+                {/* Left Side - Illustration */}
+                <div className="flex items-center justify-center">
+                    <img
+                        src={notFoundImage}
+                        alt="Book Not Found"
+                        className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-full object-contain"
+                    />
                 </div>
 
-                {/* Error Message */}
+                {/* Right Side - Error Content */}
                 <div className="text-center md:text-left">
-                    <span className="inline-block rounded-full bg-blue-100 px-4 py-2 text-sm font-bold tracking-wide text-blue-700">
-                        PAGE NOT FOUND
-                    </span>
 
-                    <h2 className="mt-6 text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900">
-                        Oops! This page
-                        <span className="block mt-2 text-blue-600">
-                            went missing.
-                        </span>
+                    <h1 className="text-8xl sm:text-9xl font-black tracking-tighter text-blue-600">
+                        404!
+                    </h1>
+
+                    <h2 className="mt-7 text-xl sm:text-2xl font-bold uppercase tracking-wide text-slate-900">
+                        Looks like you're lost!
                     </h2>
 
-                    <p className="mt-5 text-base sm:text-lg leading-8 text-slate-500">
-                        The page you are looking for doesn't exist or may have been moved.
-                        Don't worry, let's get you back on track.
+                    <p className="mt-3 text-sm sm:text-base leading-7 text-slate-500 max-w-md mx-auto md:mx-0">
+                        Oops! The book you're looking for is not available.
+                        It may have been removed, moved, or doesn't exist.
                     </p>
 
-                    <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <Link
-                            to="/"
-                            className="rounded-xl bg-blue-600 px-7 py-4 font-semibold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700 text-center"
-                        >
-                            Back to Home →
-                        </Link>
 
-                        <button
-                            onClick={() => navigate(-1)}
-                            className="rounded-xl border border-slate-200 bg-white px-7 py-4 font-semibold text-slate-700 transition-colors hover:bg-slate-100"
-                        >
-                            ← Go Back
-                        </button>
+                    {/* Action Buttons */}
+                    <div className="mt-5 flex  items-center justify-center md:justify-start gap-5">
+
+                        <div className="mt-9 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+
+
+                            <Link
+                                to="/"
+                                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-600 transition-all hover:border-blue-500 hover:text-blue-600"
+                            >
+                                <House size={17} />
+                                Go to Home
+                            </Link>
+
+                            <button
+                                onClick={() => navigate(-1)}
+                                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-600 transition-all hover:border-blue-500 hover:text-blue-600"
+                            >
+                                <ArrowLeft size={17} />
+                                Go Back
+                            </button>
+
+                        </div>
+
                     </div>
 
-                    <p className="mt-8 text-sm text-slate-400">
-                        Error 404 · Page Not Found
-                    </p>
                 </div>
 
             </div>
+
         </div>
     );
 };
